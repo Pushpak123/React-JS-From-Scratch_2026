@@ -1,0 +1,14 @@
+import {useContext,createContext} from 'react';
+
+ const BookContext = createContext();
+const UseBooks = () =>{
+    const context = useContext(BookContext);
+    if(!context)
+    {
+        throw new Error("useBooks must be used within a BookProvider");
+
+    }
+    return context;
+
+}
+export { BookContext, UseBooks };

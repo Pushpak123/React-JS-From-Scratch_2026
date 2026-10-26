@@ -1,0 +1,23 @@
+import axios from 'axios';
+import {useState} from 'react';
+export default function Test13(){
+   const [firstName, setFirstName] = useState('');
+    const [email, setEmail] = useState(''); 
+   const [password, setPassword] = useState('');
+   const handleSubmit = (e) =>{
+    e.preventDefault();
+    const person = {firstName, email, password}; 
+    axios.post('http://localhost:8080/test/t13',person)
+    .then(response =>response.data)
+    .then(data =>console.log(data))
+    .catch(error =>console.error(error));
+   }
+    return(
+        <>
+       First Name: <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} /><br /> 
+       Email: <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} /><br />
+        Password: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
+        <button onClick={handleSubmit} type='button'>Submit</button>
+        </>
+    )
+}
